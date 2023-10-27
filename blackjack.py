@@ -61,6 +61,8 @@
 
 import random
 from time import sleep
+from mywords import black_jack_logo
+from click import clear
 
 print("Welcome to Black Jack game")
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
@@ -88,10 +90,10 @@ def compare_final(player1, dealer):
 
 def game():
 
+    clear()
+    print(black_jack_logo)
     player1 = []
     dealer = []
-    player1_score = sum(player1)
-    dealer_score = sum(dealer)
     print('x' * 40)
     deal(player1)
     deal(dealer)
@@ -100,10 +102,7 @@ def game():
     player1_score = sum(player1)
     dealer_score = sum(dealer)
     print('x' * 40)
-    # print(player1_score)
-    # print(dealer_score)
     compare1(player1, dealer)
-    # sleep(3)
 
     stay_process = True
     while stay_process:

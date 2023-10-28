@@ -1,10 +1,13 @@
 import random
-import mywords
+# import mywords
+from resources import logo
+from resources import stages
+from resources import mywords
 
 
-print(mywords.logo)
+# print(mywords)
 # word_list = ["aardvark", "baboon", "camel"]
-word_list = mywords.mywords
+word_list = mywords
 
 #TODO-1 - Randomly choose a word from the word_list and assign it to a variable called chosen_word_list.
 
@@ -57,7 +60,7 @@ while missed_guess < 6 and "_" in display:
     else:
         missed_guess += 1
         print("You got it wrong this time.")
-    print(mywords.stages[6-missed_guess])
+    print(mywords[6-missed_guess])
     print(f"Your current status: {' '.join(display)}")
     print(f"Your Guessed list: {guessed_letters_list}")
     print(f"Miss: {missed_guess} Chances Left: {6 - missed_guess}")

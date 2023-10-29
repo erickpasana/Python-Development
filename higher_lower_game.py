@@ -4,14 +4,7 @@ from time import sleep
 import random
 from click import clear
 
-    # print(f"{higher_lower_logo}\n")
-    # print(f"{sub_a_details}")
-    # print(f"{vs_logo}")
-    # # print(sub_a_details)
-    # print(sub_b_details)
-    # print(sub_a['follower_count'])
-    # print(sub_b['follower_count'])
-    # sleep(2)
+clear()
 print(higher_lower_logo)
 print("Welcome to the celebrity game...")
 sleep(2)
@@ -28,16 +21,13 @@ def compare(a, b):
     x = a['follower_count']
     y = b['follower_count']
     if x > y:
-        # return a['name']
         return a
     elif y > x:
-        # return b['name']
         return b
 def start(sub_a, sub_b, sub_a_details, sub_b_details):
     print(f"{higher_lower_logo}\n")
     print(f"Compare A: {sub_a_details}")
     print(f"{vs_logo}")
-    # print(sub_a_details)
     print(f"Compare A: {sub_b_details}")
     # print(sub_a['follower_count'])
     # print(sub_b['follower_count'])
@@ -66,7 +56,6 @@ def game():
     play_again = 'n'
     game_proper = True
     while game_proper:
-
         if choice == winner:
             current_score += 1
             print(f"You're correct! Current score is: {current_score}")
@@ -75,41 +64,28 @@ def game():
             play_again = input("Would you like to play again? y/n: ")
             if play_again == 'y':
                 game()
-            elif play_again == 'n':
+            if play_again == 'n':
                 return
-            else:
+            elif play_again != 'n':
                 print("Your response is invalid.")
                 return
         sub_a.update(sub_b)
         assign_subject(sub_b)
+
         while sub_b == sub_a:
             sub_b.update(assign_subject(sub_b))
-        # print(f"subj_a: {sub_a}   subj_b: {sub_b}")
-
 
         sub_a_details = f"{sub_a['name']}, {sub_a['description']}, from {sub_a['country']}"
         sub_b_details = f"{sub_b['name']}, {sub_b['description']}, from {sub_b['country']}"
         clear()
         start(sub_a, sub_b, sub_a_details, sub_b_details)
         print(f"You're correct! Current score is: {current_score}")
-
-        # print(sub_a_details)
-        # print(sub_b_details)
-        # print(sub_a['follower_count'])
-        # print(sub_b['follower_count'])
         user_choice = input(f"Who has more followers? Type 'A' or 'B': ").lower()
         if user_choice == "a":
             choice = sub_a
         elif user_choice == "b":
             choice = sub_b
         winner = compare(sub_a, sub_b)
-    
-
-    print('x' * 40)
-    # print(sub_a_details)
-    # print(sub_b_details)
-    # print(sub_a['follower_count'])
-    # print(sub_b['follower_count'])
 
     print(winner)
     return

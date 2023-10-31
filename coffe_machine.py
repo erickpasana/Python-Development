@@ -29,12 +29,34 @@ def menu():
         """)
     
 def serve(order):
-    print(f"{order.title()} comin' right up!")
+    print(f"{order.title()} comin' right up!☕")
     
 def turn_off():
     return exit()
 
-# def payment():
+def payment():
+        """Processes the payment"""
+        total_money = int(input("How many quarters?: ")) * 0.25
+        total_money += int(input("How many dimes?: ")) * 0.1
+        total_money += int(input("How many nickels?: ")) * 0.05
+        total_money += int(input("How many pennies?: ")) * 0.01
+        return total_money
+
+def change(price, money):
+    # price =
+    # penny = 0.01
+    # nickel = 0.05
+    # dime = 0.01
+    # quarter = 0.25
+    # amount = sum([penny*pennies, nickel*nickels, dime*dimes, quarter*quarters])
+    change = round(money - price, 2)
+    if money > price:
+        return print(f"Your change is ${change:.2f}.")
+    elif money == price:
+        return print(f"You gave the exact amount.")
+    else:
+        return
+
 
     
 clear()
@@ -43,12 +65,15 @@ ingredients = resources
 water = ingredients['water']
 milk = ingredients['milk']
 coffee = ingredients['coffee']
+price = 0.00
+penny = 0.01
+nickel = 0.05
+dime = 0.10
+quarter = 0.25
+# cash = sum([penny, nickel, dime, quarter])
 cash = 0.00
-penny = 0.00
-nickel = 0.00
-dime = 0.00
-quarter = 0.00
 report = f"water={water} milk={milk} coffee={coffee} cash={cash}"
+print(report)
 # off = turn_off()
 print("="*40)
 
@@ -56,6 +81,7 @@ print("="*40)
 # 'latte': {'ingredients': {'water': 200, 'milk': 150, 'coffee': 24}, 'cost': 2.5}, 'cappuccino': {'ingredients': {'water': 250, 'milk': 100, 'coffee': 24}, 'cost': 3.0}
 # {'water': 300, 'milk': 200, 'coffee': 100}
 
+money = 0.00
 turn_on = turn_on_off(report, water, milk, coffee)
 print(turn_on)
 while turn_on:
@@ -66,7 +92,25 @@ while turn_on:
     if order == 'off':
         clear()
         exit()
-    clear()
+    # payment
+    price = coffeeMENU[order]['cost']
+    print(f"That would be ${price:.2f}. Please insert coins.")
+    # sleep(5)
+    while money < price:
+        # quarters = int(input("How many quarters?: "))
+        # dimes = int(input("How many dimes?: "))
+        # nickels = int(input("How many nickels?: "))
+        # pennies = int(input("How many pennies?: "))
+        money = payment()
+        # money = sum([penny*pennies, nickel*nickels, dime*dimes, quarter*quarters])
+        print(f"Your money is ${money:.2f}.")
+        if money < price:
+            print("Your money is less than the price. Please add more.")
+        # print(f"Your money is ${money}.")
+        change(price, money)
+        sleep(5)
+    # clear()
+    # cash += price
     serve(order)
     sleep(3)
     water -= coffeeMENU[order]['ingredients']['water']
@@ -76,18 +120,21 @@ while turn_on:
         milk -= coffeeMENU[order]['ingredients']['milk']
     coffee -= coffeeMENU[order]['ingredients']['coffee']
     cash += coffeeMENU[order]['cost']
-    report = f"water={water} milk={milk} coffee={coffee} cash={cash}"
+    report = f"water={water} milk={milk} coffee={coffee} cash=${cash:.2f}"
 
     print('x'*40)
     print(ingredients)
+    print('x'*40)
     print(report)
+    print('x'*40)
     turn_on = turn_on_off(report, water, milk, coffee)
+    print(input("Continue?"))
     
     # if not turn_on:
     #     print("Out of order. Please check the Inventory")
 print("Ooops...I need a refill!!!")
 sleep(5)
-clear()
+# clear()
 print("Out of order. Please check the machine inventory.")
 
 # def turn_off():

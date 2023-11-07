@@ -23,11 +23,17 @@ class Snake:
     def create_snake(self):
         
         for position in STARTING_POSITION:
+            self.add_segment(position)
+
+    def add_segment(self, position):
             segment = Turtle('square')
             segment.color('white')
             segment.penup()
             segment.goto(position)
             self.body.append(segment)
+
+    def extend(self):
+        self.add_segment(self.body[-1].position())
 
     def move(self):
             
@@ -37,6 +43,22 @@ class Snake:
             self.body[bod].goto(new_x, new_y)
         self.head.forward(MOVE_DISTANCE)
         # self.body[0].left(90)
+
+    # def check_collision(self, colide):
+    #     if self.body.head.distance(food) < 15:
+    #         food.new_loc()
+    #         score_board.add_score()
+    #         my_snake.extend()
+    #         print('nomnomnom')
+    #     if my_snake.head.xcor() > 295 or my_snake.head.ycor() > 295 or my_snake.head.xcor() < -295 or my_snake.head.ycor() < -295:
+    #         # screen.clear()
+    #         score_board.game_over()
+    #         # my_snake.clear()
+    #         # food.clear()
+    #         game_is_on = False
+    #     for seg in my_snake.body:
+    #         if my_snake.head.distance(seg) < 15:
+    #             game_is_on = False
 
     def left(self):
         if self.head.heading() != RIGHT:

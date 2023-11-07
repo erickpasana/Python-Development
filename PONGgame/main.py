@@ -23,7 +23,9 @@
 
 
 from turtle import Turtle, Screen
+from time import sleep
 from paddle import Paddle
+from ball import Ball
 import sys
 sys.path.append(r"C:\Users\flpas\OneDrive - Connection Systems Development\Python-Development\day21")
 
@@ -40,6 +42,7 @@ screen.tracer(0)
 # #TODO: Create Paddle class
 paddle_R = Paddle(width, height)
 paddle_L = Paddle(-width, height)
+ball = Ball(width, height)
 # screen.update()
 
 # #TODO: Move Paddle
@@ -52,9 +55,14 @@ screen.onkeypress(paddle_L.go_down, 's')
 
 game_is_on = True
 while game_is_on:
-    # paddle_R.go_up()
-    # paddle_R.move_down()
     screen.update()
+    screen.tracer(1)
+    # sleep(3)
+    ball.move()
+    screen.update()
+
+    # sleep(3)
+    # game_is_on = False
 
 
 

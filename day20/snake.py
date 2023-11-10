@@ -44,21 +44,12 @@ class Snake:
         self.head.forward(MOVE_DISTANCE)
         # self.body[0].left(90)
 
-    # def check_collision(self, colide):
-    #     if self.body.head.distance(food) < 15:
-    #         food.new_loc()
-    #         score_board.add_score()
-    #         my_snake.extend()
-    #         print('nomnomnom')
-    #     if my_snake.head.xcor() > 295 or my_snake.head.ycor() > 295 or my_snake.head.xcor() < -295 or my_snake.head.ycor() < -295:
-    #         # screen.clear()
-    #         score_board.game_over()
-    #         # my_snake.clear()
-    #         # food.clear()
-    #         game_is_on = False
-    #     for seg in my_snake.body:
-    #         if my_snake.head.distance(seg) < 15:
-    #             game_is_on = False
+    def reset(self):
+        for bod in self.body:
+            bod.goto(1000, 1000)
+        self.body.clear()
+        self.create_snake()
+        self.head = self.body[0]
 
     def left(self):
         if self.head.heading() != RIGHT:

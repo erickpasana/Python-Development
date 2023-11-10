@@ -25,7 +25,7 @@ class CarManager(Turtle):
             new_car.penup() # lift the pen up to avoid drawing a line
             new_car.color(random.choice(COLORS)) # choose a random color from a list of colors
             random_y = random.randint(-int(self.h/2) + 50, int(self.h/2) -50) # generate a random y-coordinate
-            new_car.goto(300, random_y) # move the car to the right edge of the screen with the random y-coordinate
+            new_car.goto(int(self.w/2), random_y) # move the car to the right edge of the screen with the random y-coordinate
             self.cars.append(new_car) # add the car to the list of cars
 
     def move_cars(self):

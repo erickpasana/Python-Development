@@ -19,13 +19,18 @@ count = 10
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 def start_timer():
-    update(count*60)
+    # update(count*60)
+    update(count)
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 def update(count):
     # count_time = count*60
     count_min = math.floor(count/60)
     count_sec = count % 60
+    if len(str(count_min)) < 2:
+        count_min = f"0{count_min}"
+    if len(str(count_sec)) < 2:
+        count_sec = f"0{count_sec}"
     canvas.itemconfig(canvas_txt, text=f"{count_min}:{count_sec}")
     if count > limit:
         window.after(1000, update, count - 1)

@@ -12,11 +12,8 @@ window = Tk()
 window.title("My Password Manager")
 # window.geometry(f'{width}x{height}')
 window.minsize(width, height)
-window.config(padx = 20, pady = 20)
 window.config(padx=20, pady= 20,) #bg=YELLOW
 
-# canvas = Canvas(window)
-# canvas.create_image(img)
 canvas = Canvas(width=width, height=height)   #bg=YELLOW, highlightthickness=0
 img = PhotoImage(file='logo.png')
 canvas.create_image(100, 100, image=img)

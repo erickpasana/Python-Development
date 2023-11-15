@@ -3,6 +3,7 @@ from tkinter import messagebox
 import string
 import random
 import csv
+import pyperclip
 
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
@@ -34,11 +35,12 @@ def add_data():
 
 def copy_to_clipboard():
     # Get the text from the Entry widget
-    text = pwd_entry.get()
+    # text = pwd_entry.get()
     # Clear the clipboard
-    window.clipboard_clear()
+    # window.clipboard_clear()
     # Copy the text to the clipboard
-    window.clipboard_append(text)
+    # window.clipboard_append(text)
+    return pyperclip.copy(pwd_entry.get())
 
 #Functions
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #

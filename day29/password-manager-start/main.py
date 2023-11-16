@@ -8,7 +8,7 @@ import pyperclip
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def add_data():
-        # Get the data from the Entry widgets
+    # Get the data from the Entry widgets
     website = website_entry.get()
     user = user_entry.get()
     pwd = pwd_entry.get()

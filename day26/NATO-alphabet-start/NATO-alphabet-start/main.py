@@ -7,35 +7,21 @@ nato_df = pd.read_csv("nato_phonetic_alphabet.csv")
 # {new_key:new_value for (index, row) in df.iterrows()}
 
 #TODO 1. Create a dictionary in this format:
-# {"A": "Alfa", "B": "Bravo"}
 nato_dict = {row.letter: row.code for (index, row) in nato_df.iterrows()}
 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
-user_input = input("Enter any word: ").upper()
-# user_input_list = [i for i in user_input]
-spelled = []
-for letter in user_input:
+
+def if_alpha():
+    user_input = input("Enter any word: ").upper()
     try:
-        if letter.isalpha():
-            spelled.append(nato_dict[letter]) #= [nato_dict[letter.upper()] for letter in user_input if letter.isalpha()]
-    except:
+        spelled = [nato_dict[letter] for letter in user_input]
+    except KeyError:
         print("Only letters please!")
-        break
-    # print(spelled)
-# try: letter .isalpha() except: print("Only letters please!")
-# for u in user_input_list:
-#     # val = [value for key, value in nato_dict.items() if u == key]
-#     for key, value in nato_dict.items():
-#         if u == key:
-#             spelled.append(value)
-#             break
-    # spelled.append(val)
+        if_alpha()
+    else:
+        print(spelled)
 
-
-# print(user_input_list)
-print(spelled)
-
-
+if_alpha()#nato_dict
 
 
 # student_dict = {

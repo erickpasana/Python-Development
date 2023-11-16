@@ -34,6 +34,8 @@ def add_data():
     with open("data.json", 'r') as file:
         # json.dump(new_data, file, indent=4)
         data = json.load(file)
+        data.update(new_data)
+        json.dump(data, file, indent=4)
         website_entry.delete(0, END)
         # user_entry.delete(0, END)
         pwd_entry.delete(0, END)

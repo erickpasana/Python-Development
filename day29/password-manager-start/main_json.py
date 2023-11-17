@@ -10,7 +10,7 @@ import json
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def add_data():
     # Get the data from the Entry widgets
-    website = website_entry.get()
+    website = website_entry.get().title()
     user = user_entry.get()
     pwd = pwd_entry.get()
     new_data = {
@@ -30,19 +30,28 @@ def add_data():
     if not result:
         return
     data = [website_entry.get(), user_entry.get(), pwd_entry.get()]
-# Open the CSV file
-    with open("data.json", 'r') as file:
-        # json.dump(new_data, file, indent=4)
-        data = json.load(file)
+# Open/Create the json file
+    try:
+        with open("data.json", 'r') as file:
+            # json.dump(new_data, file, indent=4)
+            data = json.load(file)
+    except FileNotFoundError:
+        with open("data.json", 'w') as file:
+            # data = json.load(file)
+            json.dump(new_data, file, indent=4)
+            # website_entry.delete(0, END)
+            # user_entry.delete(0, END)
+            # pwd_entry.delete(0, END)
+            # print(data)
+    else:
         data.update(new_data)
-        json.dump(data, file, indent=4)
-        website_entry.delete(0, END)
-        # user_entry.delete(0, END)
-        pwd_entry.delete(0, END)
-        print(data)
-
-def copy_to_clipboard():
-    return pyperclip.copy(pwd_entry.get())
+        with open("data.json", 'w') as file:
+            json.dump(data, file, indent=4)
+    finally:
+            website_entry.delete(0, END)
+            # user_entry.delete(0, END)
+            pwd_entry.delete(0, END)
+            print(data)
 
 #Functions
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -53,6 +62,27 @@ def generate_pwd():
     pwd_list_str = "".join(pwd_list)
     pwd_entry.insert(0, string=pwd_list_str)#END, 
     return pwd_list_str
+
+def copy_to_clipboard():
+    return pyperclip.copy(pwd_entry.get())
+
+def search_keyword():
+    keyword = website_entry.get().title()
+    # with open('data.json') as f:
+    #     data = json.load(f)
+    #     result = data[keyword]
+    try:
+        # if keyword in data:
+            # result = data[keyword]
+# ---------------------------------- WORKING ------------------------------------- #
+        with open('data.json') as f:
+            data = json.load(f)
+            result = data[keyword]
+            messagebox.showinfo(keyword, f"email: {result['email']}\npassword: {result['password']}")
+            # result_label.config(text=result)
+    except KeyError:
+        # result_label.config(text="Keyword not found.")
+        messagebox.showinfo(keyword, "Keyword not found.")
 # ---------------------------- UI SETUP ------------------------------- #
 width = 200
 height = 200
@@ -78,11 +108,11 @@ pwd = Label(text='Password',)
 pwd.grid(column=0, row=3, sticky='e')
 
 #Entries
-website_entry = Entry(width=50)
+website_entry = Entry(width=30)
 website_entry.focus()
 website_entry.grid(column=1, row=1, columnspan=2, sticky='w')
 
-user_entry = Entry(width=50)
+user_entry = Entry(width=30)
 user_entry.insert(0, string='flpasana@outlook.com')
 user_entry.grid(column=1, row=2, columnspan=2, sticky='w')
 
@@ -94,10 +124,13 @@ pwd_entry.grid(column=1, row=3, columnspan=2, sticky='w')
 pwd_button = Button(text="Generate Password", fg='black', bg='orange', width=15,command=generate_pwd)
 pwd_button.grid(column=2, row=3, sticky='w')
 
-add_button = Button(text="Add", fg='black', bg='green',width=20, command=add_data)   #button_click
+add_button = Button(text="Add", fg='black', bg='green',width=20, command=add_data)
 add_button.grid(column=1, row=4)
 
-copy_button = Button(text="Copy", fg='black', bg='yellow', width=15, command=copy_to_clipboard)   #button_click
+search_button = Button(text="Search", fg='black',width=15, command=search_keyword)#, bg='green'
+search_button.grid(column=2, row=1, sticky='w')
+
+copy_button = Button(text="Copy", fg='black', width=15, command=copy_to_clipboard)   #button_click, bg='yellow'
 copy_button.grid(column=2, row=4, sticky='w')
 
 

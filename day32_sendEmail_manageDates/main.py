@@ -1,3 +1,7 @@
+import smtplib
+import datetime as dt
+import random
+
 ##################### Hard Starting Project ######################
 
 # 1. Update the birthdays.csv with your friends & family's details. 

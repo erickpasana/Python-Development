@@ -26,7 +26,7 @@ weekday = now.strftime("%A")
 # month = now.month
 # # weekday = now.weekday()
 
-if weekday == 'Monday':
+if weekday == 'Tuesday':
     index = random.randint(0, 102)
     with open('quotes.txt', 'r') as file:
         quotes = file.readlines()

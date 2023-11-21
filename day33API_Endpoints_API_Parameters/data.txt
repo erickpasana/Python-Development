@@ -1,0 +1,6 @@
+Day 33
+
+JSON endpoint url:  http://api.open-notify.org/iss-now.json
+From <http://open-notify.org/Open-Notify-API/ISS-Location-Now/> 
+
+HTTP Status Codes Glossary - WebFX

@@ -55,38 +55,6 @@ for dict in PERSONS_LIST:
             print(dict['name'])
             print(dict['email'])
 
-        # greet_letter = letter_email(dict['name'])
-
-
-    # print(value)
-
-
-
-# names_birtdays_today
-# for nl in PERSONS_LIST:
-#     if nl['month'] == NOW.month and nl['day'] == NOW.day:
-#         names_birtdays_today.append(nl['name'])
-# to_greet_name = random.choice(names_birtdays_today)
-# print(to_greet_name)
-
-# if weekday == 'Tuesday':
-#     index = random.randint(0, 102)
-#     with open('quotes.txt', 'r') as file:
-#         quotes = file.readlines()
-#         quote = random.choice(quotes)
-#         email_body = quote
-
-# now = dt.datetime.now()
-# weekday = now.strftime("%A")
-# year = now.year
-# month = now.month
-# # weekday = now.weekday()
-
-    # new_letter = letter.replace("Dear [name],\n", f"Dear {names[i]},\n")
-    #     filing.write(new_letter)
-#HINT 3: Then you could compare and see if today's month/day matches one of the keys in birthday_dict like this:
-# 3. If step 2 is true, pick a random letter from letter templates and replace the [NAME] with the person's actual name from birthdays.csv
-# 4. Send the letter generated in step 3 to that person's email address.
 
 
 ##################### Hard Starting Project ######################

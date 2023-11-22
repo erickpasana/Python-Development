@@ -13,6 +13,7 @@ class QuizBrain:
             return False
 
     def next_question(self):
+        #current_question derived from list from main.py Question Class
         current_question = self.question_list[self.question_number]
         self.question_number += 1
         # print(current_question.answer)

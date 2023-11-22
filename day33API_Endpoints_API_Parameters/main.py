@@ -51,13 +51,14 @@ def ISS_view_loc():
         return False
 
 def email_notification():
-    if viewable_time() == True and ISS_view_loc == True:
+    if viewable_time() == True and ISS_view_loc() == True:
         with smtplib.SMTP("smtp.gmail.com", 587) as connection:
             connection.starttls()
             connection.login(user=MY_EMAIL, password=PWD)
-            connection.sendmail(from_addr=MY_EMAIL, to_addrs='laopasana@outlook.com', msg=f"Subject: Happy Birthday\n\n{letter_email(dict['name'])}")
+            connection.sendmail(from_addr=MY_EMAIL, to_addrs='laopasana@outlook.com', msg=f"Subject: ISS View\n\nView the ISS now!!!")
+            print('Succeess')
 
-
+email_notification()
 print(ISS_view_loc())
 print(viewable_time())
 

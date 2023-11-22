@@ -4,3 +4,5 @@ JSON endpoint url:  http://api.open-notify.org/iss-now.json
 From <http://open-notify.org/Open-Notify-API/ISS-Location-Now/> 
 
 HTTP Status Codes Glossary - WebFX
+
+10°17'48.3"N 124°47'21.7"E

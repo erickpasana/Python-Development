@@ -4,15 +4,15 @@ from quiz_brain import QuizBrain
 from click import clear
 from ui import QuizInterface
 
-quiz = QuizInterface()
-# question_bank = []
-# for question in question_data:
-#     question_text = question["question"]
-#     question_answer = question["correct_answer"]
-#     new_question = Question(question_text, question_answer)
-#     question_bank.append(new_question)
+question_bank = []
+for question in question_data:
+    question_text = question["question"]
+    question_answer = question["correct_answer"]
+    new_question = Question(question_text, question_answer)
+    question_bank.append(new_question)
 
-# quiz = QuizBrain(question_bank)
+quiz_brain = QuizBrain(question_bank)
+quiz_ui = QuizInterface(quiz_brain)
 
 # while quiz.still_has_questions():
 #     # clear()

@@ -3,10 +3,12 @@ import json
 
 PARAMETERS = {
     'amount': 10,
-    'difficulty': 'medium',
+    'category: 9'
+    'difficulty': 'easy',
     'type': 'boolean',
 }
 # API = "https://opentdb.com/api.php?amount=10&difficulty=medium&type=boolean"
+#https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean
 API = "https://opentdb.com/api.php"
 
 response = requests.get(url=API, params=PARAMETERS)

@@ -16,7 +16,7 @@ class QuizInterface:
         self.window.title('Quizzler')
         self.window.configure(padx=20, pady=20, bg=THEME_COLOR)
 
-        self.correct_answer = self.quiz.current_correct_answer
+        # self.correct_answer = self.quiz.current_correct_answer
         self.question_number = self.quiz.question_number
         self.scoring = self.quiz.score
 
@@ -52,8 +52,10 @@ class QuizInterface:
             q_text = self.quiz.next_question()
             self.q_card.itemconfig(self.q_in_qcard, text=q_text)
         else:
+            self.check.config(state='disabled')
+            self.cross.config(state='disabled')
             self.q_card.itemconfig(self.q_in_qcard, text=f"Game over. Your final score is {self.quiz.score}")
-            self.window.after(5000, exit())
+            timer = self.window.after(5000, exit)
 
         # Define the check_true method
     def check_button(self):

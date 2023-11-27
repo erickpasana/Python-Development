@@ -40,8 +40,8 @@ class QuizInterface:
         self.check.grid(column=1, row=2)
         
 
-        # self.window.after(2000, self.start)
-        self.start()
+        self.window.after(2000, self.start)
+        # self.start()
 
         self.window.mainloop()
         
@@ -55,14 +55,15 @@ class QuizInterface:
             self.check.config(state='disabled')
             self.cross.config(state='disabled')
             self.q_card.itemconfig(self.q_in_qcard, text=f"Game over. Your final score is {self.quiz.score}")
-            timer = self.window.after(5000, exit)
+            # timer = self.window.after(5000, exit)
+            timer = self.window.after(5000, quit)
 
         # Define the check_true method
     def check_button(self):
         # Check if the user's answer is "True"
-        # self.user_feedback(self.quiz.check_answer('True'))
-        is_correct = self.quiz.check_answer('True')
-        self.user_feedback(is_correct)
+        self.user_feedback(self.quiz.check_answer('True'))
+        # is_correct = self.quiz.check_answer('True')
+        # self.user_feedback(is_correct)
 
     # Define the check_false method
     def cross_button(self):

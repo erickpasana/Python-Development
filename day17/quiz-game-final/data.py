@@ -16,7 +16,6 @@ response.raise_for_status()
 # data = 
 
 question_data = response.json()['results']
-
 # print(question_data)
 
 # question_data = [

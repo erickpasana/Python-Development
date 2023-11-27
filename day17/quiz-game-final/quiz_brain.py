@@ -1,7 +1,4 @@
 import html
-# from ui import QuizInterface
-
-# ui = QuizInterface()
 
 class QuizBrain:
 

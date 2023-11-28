@@ -1,5 +1,6 @@
 import requests
 import json
+import datetime
 
 LAT = 10.296758
 LON = 124.789370
@@ -26,19 +27,27 @@ response.raise_for_status()
 
 data = response.json()
 # bring_or_not = json.dumps(data['list'][2]['weather'][0]['id'], indent=4)
-for h in range(4):
-#     # id = h  #['id']['weather']
-    id = data['list'][h]['weather'][0]['id']#['id']
-    print(id)
-    print(data['list'][h]['dt_txt'])#[0]['id']
+# for h in range(4):
+# #     # id = h  #['id']['weather']
+#     id = data['list'][h]['weather'][0]['id']#['id']
+#     print(id)
+#     print(data['list'][h]['dt_txt'])#
     # print(id[0]['id'])
+for hour_data in data['list']:
+    id = hour_data['weather'][0]['id']
+    id = hour_data['weather'][0]['id']
+    time = hour_data['dt_txt']   #[0]['id']['list']
+    
 
-    # if int(id) < 701:
-    if id < 701:
-        print("Bring an unbrella.")
+    if int(id) < 701:
+    # if id < 701:
+        print(f"At {time} bring an unbrella.")
     else:
-        print("Just bring, just in case.")
+        print(f"At {time} just bring, just in case.")
 
+    time = hour_data['dt_txt']   #[0]['id']['list']
+    # time = int(time)
+    # print(type(time))
 # print(json.dumps(data['list'][2]['weather'], indent=4))#['id']
 # print(Hr_3_cut_off[2])
 # print(data['list'])

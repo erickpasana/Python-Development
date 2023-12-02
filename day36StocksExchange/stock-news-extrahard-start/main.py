@@ -13,22 +13,25 @@ COMPANY_NAME = "Tesla Inc"
 # x-------------------- Message -------------------------------x
 stock_data = Stocks()
 news_data = News()
-# print(stock_data.percentage_change)
-# stock_data.stock()
-# print(stock_data.stock())
+print(stock_data.percentage_change)
+stock_data.stock()
+print(stock_data.percentage_change)
+print(stock_data.ARROW)
 news_data.news()
-# headline = f"{stock_data.STOCK}: {stock_data.ARROW}{stock_data.percentage_change}"
+headline = f"{stock_data.STOCK}: {stock_data.ARROW}{stock_data.percentage_change}%"
 news_body1 = f"\n\nHeadline: {news_data.title}.\n\nBrief: {news_data.description}."
 # news_body1 = news_body1.encode('utf-8')
 news_body1 = news_body1.replace('\u2026', '...')
 
+print(stock_data.stock())
+print(headline)
 # x-------------------- Send Message -------------------------------x
-with smtplib.SMTP("smtp.gmail.com", 587) as connection:
-    connection.starttls()
-    connection.login(user=MY_EMAIL, password=PWD)
-    # connection.sendmail(from_addr=MY_EMAIL, to_addrs='laopasana@outlook.com', msg=f"Subject: TSLA Stocks\n\n{headline}\n{news_body}")
-    connection.sendmail(from_addr=MY_EMAIL, to_addrs='laopasana@outlook.com', msg=f"Subject: TSLA Stocks\\n\n{news_body1}")
-    print('Succeess')
+# with smtplib.SMTP("smtp.gmail.com", 587) as connection:
+#     connection.starttls()
+#     connection.login(user=MY_EMAIL, password=PWD)
+#     # connection.sendmail(from_addr=MY_EMAIL, to_addrs='laopasana@outlook.com', msg=f"Subject: TSLA Stocks\n\n{headline}\n{news_body}")
+#     connection.sendmail(from_addr=MY_EMAIL, to_addrs='laopasana@outlook.com', msg=f"Subject: TSLA Stocks\n{headline}\n{news_body1}")
+#     print('Succeess')
 
 
 

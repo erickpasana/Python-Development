@@ -7,6 +7,7 @@ google_sheet_code = 'https://docs.google.com/spreadsheets/d/1w3mCLW2K49ViPLnCx6M
 
 # env_var_command = $env:var_name='value'
 
+#x------------------------------- Sheety ------------------------------------x
 APP_ID = 'f5fb5329'
 API_KEY = '17c8a9516aa3fa34abc7d1945dc7abfe'
 # sheety_Username = 'Erick88'
@@ -26,6 +27,7 @@ for key, value in env_var_dict.items():
     # os.environ[var_name]=value
     print(env_var)
 
-
 # print(env_var_dict.items())
 
+#x------------------------------- Kiwi/Tequila ------------------------------------x
+KiwiPartnersTequila_API = '2z6qJ-wObDBvJ93qovMh7TQRi246n1gx'

@@ -7,9 +7,10 @@ import datetime
 class Message:
 
 # x-------------------- Attributes --------------------------x
-    def __init__(self, subject, body):
+    def __init__(self, subject, body, email_list):
         self.MY_EMAIL = "omegakonstrukt@gmail.com"
         self.PWD = "hxtf fjvb aext gsvy"
+        self.to_addrs = email_list
         self.SUBJECT = subject
         self.BODY = body
 
@@ -18,8 +19,7 @@ class Message:
         with smtplib.SMTP("smtp.gmail.com", 587) as connection:
             connection.starttls()
             connection.login(user=self.MY_EMAIL, password=self.PWD)
-            # connection.sendmail(from_addr=MY_EMAIL, to_addrs='laopasana@outlook.com', msg=f"Subject: TSLA Stocks\n\n{headline}\n{news_body}")
-            connection.sendmail(from_addr=self.MY_EMAIL, to_addrs='laopasana@outlook.com', msg=f"Subject: {self.SUBJECT}\n\n{self.BODY}")      #\n\n{news_body1}
+            connection.sendmail(from_addr=self.MY_EMAIL, to_addrs=self.to_addrs, msg=f"Subject: {self.SUBJECT}\n\n{self.BODY}")
             print('Success')
 
     

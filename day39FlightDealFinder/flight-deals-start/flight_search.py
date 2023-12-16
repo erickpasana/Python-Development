@@ -1,10 +1,10 @@
 import os
 import requests
 import json
-from flight_data import FlightData
+# from flight_data import FlightData
 
 search_endpoint = 'https://api.tequila.kiwi.com/v2/search'
-flight_data_price = FlightData()
+# flight_data_price = FlightData()
 # data[0]['price']
 class FlightSearch:
     #This class is responsible for talking to the Flight Search API.

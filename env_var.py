@@ -31,3 +31,7 @@ for key, value in env_var_dict.items():
 
 #x------------------------------- Kiwi/Tequila ------------------------------------x
 KiwiPartnersTequila_API = '2z6qJ-wObDBvJ93qovMh7TQRi246n1gx'
+
+#x------------------------------- Google Email ------------------------------------x
+MY_EMAIL = "omegakonstrukt@gmail.com"
+PWD = "hxtf fjvb aext gsvy"

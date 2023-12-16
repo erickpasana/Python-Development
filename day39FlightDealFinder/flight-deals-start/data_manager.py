@@ -11,7 +11,7 @@ class DataManager:
     #This class is responsible for talking to the Google Sheet.
 
     def __init__(self, row_id, iata_code):
-        self.end_point = os.environ.get("sheety_end_point")
+        self.end_point = sheety_end_point
         self.row_id = row_id
         self.iata_code = iata_code
         self.sheety_header = {
@@ -50,6 +50,7 @@ class DataManager:
         # row_id = row['id']
         edit_IATA = requests.put(f"{self.end_point}/{self.row_id}", json=request_body, headers=self.sheety_header)
         print(edit_IATA.text)
+
 
 
 #         request_body = {

@@ -17,7 +17,7 @@ quote = f"{data.loc[q_index, 'Quote']} - {data.loc[q_index, 'Author']}"
 #x--------------------------------- Send Message -----------------------------------x
 subject = "Daily Quotes"
 body = quote
-email_list = ['laopasana@outlook.com', ]#'dodj_ortalla@yahoo.com'
+email_list = ['laopasana@outlook.com', 'dodj_ortalla@yahoo.com']
 send_msg = Message(subject, body, email_list)
 send_msg.sendMessage()
 

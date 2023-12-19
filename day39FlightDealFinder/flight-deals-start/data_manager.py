@@ -10,10 +10,14 @@ sheety_end_point = f'https://api.sheety.co/b17d3c0b422c3d51ecc6636c25073af5/{pro
 class DataManager:
     #This class is responsible for talking to the Google Sheet.
 
-    def __init__(self, row_id, iata_code):
+    # def __init__(self, row_id, iata_code):
+    def __init__(self, firstname, lastname, email):
         self.end_point = sheety_end_point
-        self.row_id = row_id
-        self.iata_code = iata_code
+        # self.row_id = row_id
+        # self.iata_code = iata_code
+        self.firstname = firstname
+        self.lastname = lastname
+        self.email = email
         self.sheety_header = {
             'Content-Type': 'application/json',
             "Authorization": "Basic RXJpY2s4ODpHR25oQzdAeERCdGpiN15V",
@@ -50,6 +54,21 @@ class DataManager:
         # row_id = row['id']
         edit_IATA = requests.put(f"{self.end_point}/{self.row_id}", json=request_body, headers=self.sheety_header)
         print(edit_IATA.text)
+
+    def add_user(self):
+        end_point = 'https://api.sheety.co/b17d3c0b422c3d51ecc6636c25073af5/flightdeals/users'
+        request_body = {
+            "user": {
+                'firstName': self.firstname,
+                "lastName": self.lastname,
+                'email': self.email,
+            }
+        }
+        response = requests.post(end_point, json=request_body, headers=self.sheety_header)
+        print(response.text)
+        data = response.json()
+        print(data, indent=4)
+        
 
 
 

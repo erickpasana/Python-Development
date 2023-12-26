@@ -1,0 +1,26 @@
+body {
+    background-color: black;
+}
+.poster {
+    text-align: center;
+    width: 70%;
+    color: white;
+    font-family: 'Libre Baskerville';
+    margin-left: 25%;
+    margin-top: 100px;
+}
+h1 {
+    text-transform: uppercase;
+}
+.image {
+    border: 5px solid yellow;
+    /* width: 100%; */
+}
+p {
+    color: white;
+    text-transform: uppercase;
+}
+
+/* img {
+    src: "assets\images\daenerys.jpeg" alt: "daenerys" width: 75%
+} */

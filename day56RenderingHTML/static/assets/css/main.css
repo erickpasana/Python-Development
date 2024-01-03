@@ -18,13 +18,14 @@
 		font: inherit;
 		vertical-align: baseline;
 	}
-
+	
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 		display: block;
 	}
-
+	
 	body {
 		line-height: 1;
+		/* text-align: center; */
 	}
 
 	ol, ul {
@@ -734,6 +735,7 @@
 				display: block;
 				margin: 0 auto;
 				border-radius: 100%;
+				/* border-radius: 60%; */
 				box-shadow: 0 0 0 1.5em #ffffff;
 			}
 

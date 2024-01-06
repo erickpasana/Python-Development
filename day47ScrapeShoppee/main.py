@@ -1,5 +1,4 @@
 import requests
-import lxml
 from bs4 import BeautifulSoup
 
 # url = "https://www.amazon.com/dp/B075CYMYK6?psc=1&ref_=cm_sw_r_cp_ud_ct_FM9M699VKHTT47YD50Q6"
@@ -9,12 +8,18 @@ url = "https://shopee.ph/V380-Outdoor-CCTV-Dual-Camera-Wifi-Connect-To-Cellphone
 #     "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8"
 # }
 
-response = requests.get(url)    #, headers=header
-
-# soup = BeautifulSoup(response.content, "lxml")
+response = requests.get(url)
 soup = BeautifulSoup(response.content, "html.parser")
-product_name_soup = soup.select("div.c-_44qnta")
-print(soup.prettify())
+product_price = soup.select("span")   #div.c-_44qnta 
+# product_price = soup.select("div.c-pqTWkA")[0]
+# product_price = soup.select("h1.c-rqONlU")
+# product_price = soup.find('div.c-flex items-center', {'class': 'pqTWkA'})
+
+print(product_price)
+
+# print(soup.prettify())
+
+#{} div.pqTWkA    [, 'p'], 
 
 # price = soup.find(class_="a-offscreen").get_text()
 # price_without_currency = price.split("$")[1]

@@ -1,45 +1,47 @@
 from datetime import date
-import time
-import requests
+from selenium import webdriver
+from selenium.webdriver.edge.service import Service
+from selenium.webdriver.common.by import By
+from time import sleep
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 #print date to help users to track down when the file was generated.
 data = date.today()
 data.strftime("%d/%m/%Y")
 data1 = date.today()
 
-#asks for seller id.
-# seller_shopee_id = input('Type in the seller id: \n')
-seller_shopee_id = '20790600795'
 
-url_api_request = 'https://shopee.com.br/api/v4/recommend/recommend?bundle=shop_page_product_tab_main&limit=999&offset=0&section=shop_page_product_tab_main_sec&shopid='    # + seller_shopee_id
-response = requests.get(url_api_request)
+# url = "https://shopee.ph/V380-Outdoor-CCTV-Dual-Camera-Wifi-Connect-To-Cellphone-With-Voice-Dual-Lens-Waterproof-Night-Visio-i.102443022.20790600795?xptdk=57d2ba34-1423-450b-a217-bfbd33d6798d"
+url2 = "https://shopee.ph/V380-Outdoor-CCTV-Dual-Camera-Wifi-Connect-To-Cellphone-With-Voice-Dual-Lens-Waterproof-Night-Visio-i.102443022.20790600795?xptdk=57d2ba34-1423-450b-a217-bfbd33d6798d"
+edge_option = webdriver.EdgeOptions()
+edge_option.add_experimental_option('detach', True)
+service = Service(executable_path=r"C:\Users\flpas\AppData\Local\Programs\msedgedriver.exe")
+driver = webdriver.Edge(service=service, options=edge_option)
+driver.get(url2)
 
-#define the number of ads published.
-# num_ads = (response.json()['data']['sections'][0]['data']['item'])
-# list_size = len(num_ads)
-print(response.text)
+# Find the button and click it
+xpath = "//*[@id='main']/div/div[2]/div[1]/div[1]/div/div/section[1]/section[2]/div/div[4]/div/div[2]/div/section[1]/div/button[3]"
+# button = driver.find_element(By.XPATH, xpath)  # replace 'button-id' with the actual id
+button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, xpath)))  # replace 'button-id' with the actual id
+button.click()
+# driver.execute_script("arguments[0].click();", button)
+# Wait for the price to be updated
+# WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CLASS_NAME, 'pqTWkA'))) # replace 'price-class' with the actual class
+
+# Now get the price
+price = driver.find_element(By.XPATH, "//*[@id='main']/div/div[2]/div[1]/div[1]/div/div/section[1]/section[2]/div/div[3]/div[2]/div/section/div/div[2]/div[1]").text
+print(price)
+driver.quit()
+# sleep(3)
+# driver.close()
 
 
-#creates a while statement using the number of ads created. Since the (index) json file stars with 0, the while statment starts with -1. 
-#--------------------------------------------------x
-# creat_while = -1
-# while creat_while < list_size - 1:
-#     creat_while += 1
-	
-#     #store the information displayed inside the json file. It's possible to extract even more data, you only need to add the exact json's children path you're interested in. The scrapper will sleep for 1 second and then get the next ad's information.
-#     ad_id = (r.json()['data']['sections'][0]['data']['item'][creat_while]['itemid'])
-#     title = (r.json()['data']['sections'][0]['data']['item'][creat_while]['name'])
-#     stock = (r.json()['data']['sections'][0]['data']['item'][creat_while]['stock'])
-#     sales = (r.json()['data']['sections'][0]['data']['item'][creat_while]['historical_sold'])
-#     likes = (r.json()['data']['sections'][0]['data']['item'][creat_while]['liked_count'])
-#     views = (r.json()['data']['sections'][0]['data']['item'][creat_while]['view_count'])
-#     price = (r.json()['data']['sections'][0]['data']['item'][creat_while]['price'])
-#     rating = (r.json()['data']['sections'][0]['data']['item'][creat_while]['item_rating']['rating_count'][0])
-#     # time.sleep(1)
 
-#     #you've to set where you wanna save the csv file. If you run the code without changing the directory settings, you'll get no data.
-#     print(ad_id, '|', title, '|', stock, '|', price, '|', sales, '|', rating, '|', likes, '|', views, file=open("/your-directory/.csv" % data, "a"))
-
-# print('The scrapper is done. Your CSV file is ready!')
-
-#--------------------------------------------------x
+# item_price = driver.find_element(By.CLASS_NAME, value="pqTWkA")
+# item_price = driver.find_element(By.XPATH, value="//*[@id='main']/div/div[2]/div[1]/div[1]/div/div/section[1]/section[2]/div/div[3]/div[2]/div/section/div/div[2]/div[1]")
+# item_price = driver.find_elements(By.CLASS_NAME, value="pqTWkA")
+# print('x'*40)
+# for i in item_price:
+#     print(f"The price is; Php{i.text}")
+#     print('x'*40)

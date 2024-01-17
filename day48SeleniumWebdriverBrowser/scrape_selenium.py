@@ -12,25 +12,18 @@ service = Service(executable_path=r"C:\Users\flpas\AppData\Local\Programs\msedge
 driver = webdriver.Edge(service=service, options=edge_option)
 driver.get(url)
 
-
 # x_path = "//*[@id='content']/div/section/div[3]/div[2]/div/h2"
-x_path = "//*[@id='content']/div/section/div[3]/div[2]/div/ul"
-widget_ = driver.find_elements(By.XPATH, x_path)
+# x_path = "//*[@id='content']/div/section/div[3]/div[2]/div/ul"
+widget_time = driver.find_elements(By.CSS_SELECTOR, 'div.event-widget time')
+widget_event = driver.find_elements(By.CSS_SELECTOR, 'div.event-widget li a')
 print('x'*40)
-data_dict = {}
-# for i in widget_:
-#     data_list.append(i.text.split('\n'))
-for i in range(len(widget_)):
-    pass
+event_dict = {}
 
-print(data_dict)
+for i in range(len(widget_time)):
+    event_dict[i+1] = {
+        'date': widget_time[i].text,
+        'event': widget_event[i].text,
+    }
+
+print(event_dict)
 driver.quit()
-
-
-
-# try:
-#     # Wait for up to 10 seconds for the element to be present
-#     widget_ = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "h2.icon-calendar")))
-#     print(widget_.text)
-# finally:
-#     driver.quit()

@@ -4,6 +4,7 @@ from selenium.webdriver.edge.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 
@@ -13,21 +14,21 @@ edge_option.add_experimental_option('detach', True)
 service = Service(executable_path=r"C:\Users\flpas\AppData\Local\Programs\msedgedriver.exe")
 driver = webdriver.Edge(service=service, options=edge_option)
 driver.get(url)
+driver.implicitly_wait(10)
 #----------------------------- Click Link ------------------------------x
 # link_click = driver.find_element(By.LINK_TEXT, 'Mark Baldwin')
 # link_click.click()
 
 #----------------------------- Type Search ------------------------------x
-wait = WebDriverWait(driver, 10)
-# sleep(5)
-# element = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "vector-icon")))
+# wait = WebDriverWait(driver, 10)
 element = driver.find_element(By.CSS_SELECTOR, "a.cdx-button--fake-button--enabled span.vector-icon")
 element.click()
-# actions = ActionChains(driver)
-# actions.move_to_element(element).perform()
+
+sleep(1)
+driver.implicitly_wait(10)
 search_ = driver.find_element(By.NAME, value="search")
-wait = WebDriverWait(driver, 10)
-search_.send_keys("Python", Keys.ENTER)
+search_.send_keys("Python")#, Keys.ENTER
+search_.submit()
 
 
 # print(element.text)
@@ -41,3 +42,6 @@ search_.send_keys("Python", Keys.ENTER)
 # wait = WebDriverWait(driver, 10)
 # print(widget_.text)
 # widget_ = driver.find_element(By.CSS_SELECTOR, '#articlecount a')
+
+# actions = ActionChains(driver)
+# actions.move_to_element(element).perform()

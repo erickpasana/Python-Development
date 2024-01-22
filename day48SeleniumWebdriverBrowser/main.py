@@ -14,11 +14,12 @@ driver.get(url)
 # button_.click()
 # sleep(10)
 # item_price = driver.find_element(By.XPATH, value="//*[@id='main']/div/div[2]/div[1]/div[1]/div/div/section[1]/section[2]/div/div[3]/div[2]/div/section/div/div[2]/div[1]")
-item_price = driver.find_element(By.CSS_SELECTOR, "div.G27FPf")
 
+item_price = driver.find_element(By.CSS_SELECTOR, "div.G27FPf")
 print(item_price.text)
+
 # driver.close()
-# driver.quit()
+driver.quit()
 
 
 
